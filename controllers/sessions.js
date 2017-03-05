@@ -9,7 +9,7 @@ function sessionsCreate(req, res, next) {
     .findOne({ email: req.body.email })
     .then((user) => {
       if(!user || !user.validatePassword(req.body.password)) {
-        req.flash('danger', 'Unknown email/password combination');
+        req.flash('alert', 'Unknown email  /  password combination');
         return res.redirect('/login');
       }
 
@@ -18,10 +18,24 @@ function sessionsCreate(req, res, next) {
 
       req.user = user;
 
-      req.flash('success', `Welcome back, ${user.username}!`);
-      res.redirect('/');
+      req.flash('success', `Welcome back, ${user.id}!`);
+      res.redirect(`/user/${user.id}`);
     })
     .catch(next);
+}
+
+function showUser(req, res) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((user) => {
+      console.log('hit');
+      if(!user) return res.status(404).send('Not found');
+      res.render('sessions/show', { user });
+    })
+    .catch((err) => {
+      res.status(500).end(err);
+    });
 }
 
 function sessionsDelete(req, res) {
@@ -31,5 +45,6 @@ function sessionsDelete(req, res) {
 module.exports = {
   new: sessionsNew,
   create: sessionsCreate,
-  delete: sessionsDelete
+  delete: sessionsDelete,
+  show: showUser
 };

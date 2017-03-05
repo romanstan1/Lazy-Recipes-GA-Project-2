@@ -6,12 +6,18 @@ const secureRoute = require('../lib/secureRoute');
 router.get('/', (req, res) => res.render('statics/index'));
 
 router.route('/register')
-  .get(registrations.new)
+  // .get(registrations.new)
   .post(registrations.create);
 
 router.route('/login')
   .get(sessions.new)
   .post(sessions.create);
+
+router.route('/user/:id')
+  .get(sessions.show);
+
+router.route('/logout')
+  .get(sessions.delete);
 
 router.all('*', (req, res) => res.notFound());
 

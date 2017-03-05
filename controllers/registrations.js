@@ -1,8 +1,8 @@
 const User = require('../models/user');
 
-function newRoute(req, res) {
-  return res.render('registrations/new');
-}
+// function newRoute(req, res) {
+//   return res.render('registrations/new');
+// }
 
 function createRoute(req, res, next) {
   User
@@ -11,13 +11,13 @@ function createRoute(req, res, next) {
     .catch((err) => {
       if(err.name === 'ValidationError') {
         req.flash('alert', 'Passwords do not match');
-        return res.redirect('/register');
+        return res.redirect('/');
       }
       next();
     });
 }
 
 module.exports = {
-  new: newRoute,
+  // new: newRoute,
   create: createRoute
 };
