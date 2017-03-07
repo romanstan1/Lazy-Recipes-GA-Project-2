@@ -5,6 +5,8 @@ const imageSchema = new mongoose.Schema({
   caption: { type: String },
   ingredients: { type: Array },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' }
+}, {
+  timestamps: true
 });
 
 imageSchema.virtual('src')

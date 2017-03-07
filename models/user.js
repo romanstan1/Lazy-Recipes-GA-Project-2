@@ -5,6 +5,8 @@ const imageSchema = new mongoose.Schema({
   filename: { type: String },
   caption: { type: String },
   ingredients: { type: Array }
+}, {
+  timestamps: true
 });
 
 imageSchema.virtual('src')

@@ -13,11 +13,6 @@ router.get('/', (req, res) => res.render('statics/index'));
 router.route('/register')
   .post(registrations.create);
 
-// router.route('/user/:id/image/:imageId')
-//   .get(images.show);
-  //.post(users.createFoodValues);
-  // .delete(users.delete);
-
 router.route('/images')
   .get(images.index)
   .post(upload.single('filename'), images.create);
@@ -29,23 +24,18 @@ router.route('/images/:id')
   .get(images.show)
   .delete(images.delete);
 
-
-// router.route('/images/new')
-//   .get(images.newImage)
-//   .post(upload.single('filename'), images.createImage);
-//
-// router.route('/discover')
-//   .get(images.show);
-//
-
-
 router.route('/login')
   .get(sessions.new)
   .post(sessions.create);
 //
 
 router.route('/user/:id')
-  .get(sessions.show);
+  .get(sessions.show)
+  .put(sessions.update);
+
+router.route('/users/edit')
+  .get(sessions.edit);
+
 //
 router.route('/logout')
   .get(sessions.delete);

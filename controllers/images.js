@@ -28,6 +28,7 @@ function createRoute(req, res, next) {
 function indexRoute(req, res) {
   Image
     .find()
+    .sort({updatedAt: 'desc'})
     .exec()
     .then((images) => {
       res.render('images/index', { images });

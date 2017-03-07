@@ -6,12 +6,6 @@
         <a href="/images/<%= image.id %>" >
           <img src="<%= image.src %>" alt="<%= image.caption %>">
         </a>
-
-        <form class="delete" action="/images/<%= image.id %>" method="POST">
-          <input type="hidden" name="_method" value="DELETE"/>
-          <button><div> </div></button>
-        </form>
-
       </div>
   <% }) %>
 
