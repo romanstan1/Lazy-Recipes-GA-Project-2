@@ -8,7 +8,9 @@
     <script src="/js/app.js" charset="utf-8"></script>
   </head>
   <body>
-    <% include ./partials/navbar %>
+    <% if(locals.isAuthenticated) { %>
+      <% include ./partials/navbar %>
+    <% } %>
     <% for(const type in messages) { %>
       <div class="<%= type %>">
         <h5><%= messages[type] %></h5>
@@ -17,5 +19,10 @@
     <main>
       <%- body %>
     </main>
+
+      <% if(locals.isAuthenticated) { %>
+        <% include ./partials/footer %>
+      <% } %>
+    
   </body>
 </html>

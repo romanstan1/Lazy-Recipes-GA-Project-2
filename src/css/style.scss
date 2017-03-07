@@ -1,4 +1,4 @@
-body, nav, ul, li, a {
+body, nav, ul, li, a, footer, h1{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -6,43 +6,32 @@ body, nav, ul, li, a {
   text-decoration: none;
   color: black;
   font-family: sans-serif;
+  font-size: 0;
 }
 
-body {
+a {
+  font-size: 12px;
+}
+
+
+html, body {
+  height: 100%;
+  margin: 0;
   text-align: center;
 }
-
-nav {
-  text-align: left;
-  // height: 50px;
-  background: grey;
-  // width: 90%;
-  // background: teal;
-  ul {
-    line-height: 50px;
-    background: teal;
-    list-style: none;
-    display: block;
-    width: 95%;
-    margin: 0 auto;
-    li {
-      display: inline-block;
-      background: red;
-    }
-    :hover {
-      color: white;
-    }
-  }
+main {
+  min-height: calc(100% - 100px);
 }
 
 h1 {
-  margin-top: 100px;
+  font-size: 28px;
+  padding-top: 120px;
 }
 
 form {
   outline: none;
   &.register {
-    margin-top: 100px;
+    margin-top: 70px;
   }
   &.login {
     margin-top: 200px;
@@ -80,6 +69,49 @@ button {
   }
 }
 
+form.delete {
+
+  z-index: 2;
+  margin-top: -325px;
+  margin-right: -265px;
+  button {
+    background:none;
+    opacity: 0.4;
+    border: none;
+    height:35px;
+    width:35px;
+    transition: all .07s ease-in-out;
+
+    div {
+    background: white;
+    height: 35px;
+    position: relative;
+    width: 4px;
+    left: 10px;
+    top: -2px;
+    transform: rotate(45deg);
+      &:after {
+      background: white;
+      content: "";
+      height: 4px;
+      left: -16px;
+      position: absolute;
+      top: 15px;
+      width: 35px;
+      }
+    }
+
+
+    &:hover {
+      background: none;
+      opacity: 1;
+      color: black;
+    }
+  }
+}
+
+
+
 .alert, .success {
   font-size: 20px;
   position: fixed;
@@ -87,4 +119,113 @@ button {
   text-transform: uppercase;
   text-align: center;
   width: 100%;
+}
+
+.feed {
+  display: block;
+  width: 990px;
+  margin: 0 auto;
+  // background: green;
+  overflow: hidden;
+  padding-bottom: 100px;
+  padding-top: 20px;
+  p {
+    font-size: 20px;
+    color: black;
+  }
+}
+
+.profile-image {
+  float: left;
+  padding: 0;
+  position: relative;
+  display: inline-block;
+  background: ghostwhite;
+  height: 300px;
+  width: 300px;
+  overflow: hidden;
+  margin: 15px;
+    a {
+      // transition: opacity 0.5s ease-in-out;
+      // opacity: 0.3;
+      // :hover {
+      //   opacity: 0.2;
+      // }
+        img{
+        margin: 0 auto;
+        display: block;
+        height: 100%;
+        opacity: 0.9;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+          transform: scale(1.04);
+          opacity: 0.95;
+        }
+    }
+  }
+}
+//
+// .grow { transition: all .2s ease-in-out; }
+// .grow:hover { transform: scale(1.1); }
+
+.recipe-image {
+  margin: 0 auto;
+  position: relative;
+  display: inline-block;
+  height: 450px;
+  overflow: hidden;
+  margin: 0 15px;
+    img {
+    margin: 0 auto;
+    display: block;
+    height: 100%;
+  }
+}
+
+
+footer, nav {
+  position: relative;
+  left:0;
+  right: 0;
+  bottom: 0;
+  height: 100px;
+  text-align: left;
+  //margin-top: 100px;
+  // height: 50px;
+  background: grey;
+  // width: 90%;
+  // background: teal;
+  ul {
+    position: relative;
+    top:20px;
+    line-height: 50px;
+    background: teal;
+    list-style: none;
+    display: block;
+    width: 95%;
+    margin: 0 auto;
+    li {
+      display: inline-block;
+      margin-right: 15px;
+      a {
+        border: 3px solid black;
+        font-size: 16px;
+        // box-sizing: content-box;
+        padding: 15px;
+        line-height: 20px;
+        display: block;
+        // height: 50px;
+        // background: yellow;
+        &:hover {
+          border: 3px solid white;
+          color:white
+        }
+      }
+    }
+  }
+}
+
+footer {
+ margin-top: -100px;
 }
