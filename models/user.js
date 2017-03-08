@@ -18,7 +18,9 @@ imageSchema.virtual('src')
 const userSchema = new mongoose.Schema({
   username: String,
   email: String,
-  password: { type: String, required: true }
+  password: { type: String },
+  facebookId: Number,
+  image: String
   // images: [ imageSchema ]
 });
 
@@ -36,7 +38,7 @@ userSchema.pre('validate', function checkPassword(next) {
 });
 
 userSchema.pre('validate', function checkPassword(next) {
-  if(!this.password && !this.githubId) {
+  if(!this.password && !this.facebookId) {
     this.invalidate('password', 'required');
   }
   if(this.isModified('password') && this._passwordConfirmation !== this.password) this.invalidate('passwordConfirmation', 'does not match');

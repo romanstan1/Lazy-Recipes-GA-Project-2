@@ -4,6 +4,17 @@
   </div>
   <div class="feed">
     <p>
+      <% recipes.forEach((recipe) => { %>
+        <%= recipe.title %> <br>
+        <%= recipe.image_url %> <br>
+        <img src="<%= recipe.image_url %>" alt="<%= recipe.title %>"> <br>
+        <%= recipe.publisher %> <br>
+        <br>
+        <br>
+        <br>
+
+
+      <% }) %>
       <%= image.ingredients %>
     </p>
   </div>

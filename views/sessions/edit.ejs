@@ -1,12 +1,13 @@
 <h1>Edit</h1>
 
-  <form method="POST" action="/user/<%= user.id %>">
+  <form method="POST" action="/users/<%= user.id %>">
     <input type="hidden" name="_method" value="PUT">
+
     <div>
-      <input type="text" name="username" id="username" value="<%= user.username %>">
+      <input type="text" name="username" id="username" value="<%= user.username %>" placeholder="Username">
     </div>
     <div>
-      <input type="email" name="email" id="email" value="<%= user.email %>">
+      <input type="email" name="email" id="email" value="<%= user.email %>" placeholder="Email">
     </div>
     <div>
       <input type="password" name="password" id="password" placeholder="Password">

@@ -21,12 +21,12 @@ function sessionsUpdate(req, res, next ) {
       return user.save();
     })
     .then((user) => {
-      res.redirect(`/user/${user.id}`);
+      res.redirect(`/users/${user.id}`);
     })
     .catch((err) => {
       if(err.name === 'ValidationError') {
         req.flash('alert', 'Passwords do not match');
-        return res.redirect(`/user/${user.id}`);
+        return res.render('sessions/edit');
       }
       next();
     });
@@ -47,7 +47,7 @@ function sessionsCreate(req, res, next) {
       req.user = user;
 
       req.flash('success', `Welcome back, ${user.id}!`);
-      res.redirect(`/user/${user.id}`);
+      res.redirect(`/users/${user.id}`);
     })
     .catch(next);
 }

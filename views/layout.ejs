@@ -3,26 +3,31 @@
   <head>
     <meta charset="utf-8">
     <title>project-2</title>
-    <%# <link rel="stylesheet" href="/css/style.css">%>
-    <% include ./partials/stylesheets %>
+    <link rel="stylesheet" href="/css/style.css">
+
     <script src="/js/app.js" charset="utf-8"></script>
   </head>
   <body>
-    <% if(locals.isAuthenticated) { %>
+
+    <header>
       <% include ./partials/navbar %>
-    <% } %>
-    <% for(const type in messages) { %>
-      <div class="<%= type %>">
-        <h5><%= messages[type] %></h5>
-      </div>
-    <% } %>
+    </header>
+
     <main>
+
+      <% for(const type in messages) { %>
+        <div class="<%= type %>">
+          <h5><%= messages[type] %></h5>
+        </div>
+      <% } %>
+
       <%- body %>
+
     </main>
 
-      <% if(locals.isAuthenticated) { %>
-        <% include ./partials/footer %>
-      <% } %>
-    
+    <footer>
+      <% include ./partials/footer %>
+    </footer>
+
   </body>
 </html>

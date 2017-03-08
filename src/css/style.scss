@@ -1,4 +1,4 @@
-body, nav, ul, li, a, footer, h1{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -9,26 +9,26 @@ body, nav, ul, li, a, footer, h1{
   font-size: 0;
 }
 
+body {
+  //padding: 25px;
+}
+
 a {
   font-size: 12px;
 }
 
-
-html, body {
-  height: 100%;
-  margin: 0;
-  text-align: center;
-}
 main {
-  min-height: calc(100% - 100px);
+  min-height: calc(100vh - 200px);
+  overflow: hidden;
 }
 
 h1 {
   font-size: 28px;
-  padding-top: 120px;
 }
 
 form {
+  padding: 0;
+  margin: 0;
   outline: none;
   &.register {
     margin-top: 70px;
@@ -70,7 +70,6 @@ button {
 }
 
 form.delete {
-
   z-index: 2;
   margin-top: -325px;
   margin-right: -265px;
@@ -81,7 +80,6 @@ form.delete {
     height:35px;
     width:35px;
     transition: all .07s ease-in-out;
-
     div {
     background: white;
     height: 35px;
@@ -100,8 +98,6 @@ form.delete {
       width: 35px;
       }
     }
-
-
     &:hover {
       background: none;
       opacity: 1;
@@ -110,25 +106,37 @@ form.delete {
   }
 }
 
-
-
-.alert, .success {
-  font-size: 20px;
-  position: fixed;
-  color: dodgerblue;
-  text-transform: uppercase;
-  text-align: center;
-  width: 100%;
+input[type=text].search {
+    display:block;
+    margin: 0;
+    width: 200px;
+    box-sizing: border-box;
+    border: 3px solid black;
+    // border-radius: 4px;
+    font-size: 16px;
+    height: 56px;
+    // line-height: 36px;
+    background-color: white;
+    //    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 10px;
+    -webkit-transition: width 0.2s ease-in-out;
+    transition: width 0.2s ease-in-out;
 }
+
+input[type=text].search:focus {
+    width: 200%;
+}
+
 
 .feed {
   display: block;
-  width: 990px;
+  width: 100%;
   margin: 0 auto;
-  // background: green;
+  background: beige;
   overflow: hidden;
   padding-bottom: 100px;
-  padding-top: 20px;
+  padding-top: 200px;
   p {
     font-size: 20px;
     color: black;
@@ -140,17 +148,11 @@ form.delete {
   padding: 0;
   position: relative;
   display: inline-block;
-  background: ghostwhite;
-  height: 300px;
-  width: 300px;
+  width: calc( ((100vw - 50px) / 2) - 1vw );
+  height: calc( ((100vw - 50px) / 2) - 1vw );
+  margin:  0.5vw ;
   overflow: hidden;
-  margin: 15px;
     a {
-      // transition: opacity 0.5s ease-in-out;
-      // opacity: 0.3;
-      // :hover {
-      //   opacity: 0.2;
-      // }
         img{
         margin: 0 auto;
         display: block;
@@ -159,12 +161,21 @@ form.delete {
         transition: all .2s ease-in-out;
 
         &:hover {
-          transform: scale(1.04);
+          transform: scale(1.01);
           opacity: 0.95;
         }
     }
   }
 }
+.small {
+
+  width: calc( ((100vw - 50px) / 4) - 1vw );
+  height: calc( ((100vw - 50px) / 4) - 1vw );
+  margin:  0.5vw ;
+  overflow: hidden;
+}
+
+
 //
 // .grow { transition: all .2s ease-in-out; }
 // .grow:hover { transform: scale(1.1); }
@@ -184,11 +195,12 @@ form.delete {
 }
 
 
-footer, nav {
+footer, header {
+  overflow: visible;
   position: relative;
   left:0;
   right: 0;
-  bottom: 0;
+  top: 0;
   height: 100px;
   text-align: left;
   //margin-top: 100px;
@@ -224,8 +236,4 @@ footer, nav {
       }
     }
   }
-}
-
-footer {
- margin-top: -100px;
 }

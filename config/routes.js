@@ -2,39 +2,43 @@ const router = require('express').Router();
 const registrations = require('../controllers/registrations');
 const sessions = require('../controllers/sessions');
 const secureRoute = require('../lib/secureRoute');
-const users = require('../controllers/users');
+const oauth = require('../controllers/oauth');
+const oauthConfig = require('../config/oauth');
 const images = require('../controllers/images');
 
 const upload = require('../lib/upload');
 
-
-router.get('/', (req, res) => res.render('statics/index'));
+router.get('/', (req, res) => res.render('statics/index', { oauth: oauthConfig }));
 
 router.route('/register')
   .post(registrations.create);
 
 router.route('/images')
   .get(images.index)
-  .post(upload.single('filename'), images.create);
+  .post(secureRoute, upload.single('filename'), images.create);
 
 router.route('/images/new')
-  .get(images.new);
+  .get(secureRoute, images.new);
 
 router.route('/images/:id')
   .get(images.show)
-  .delete(images.delete);
+  .delete(secureRoute, images.delete);
 
 router.route('/login')
   .get(sessions.new)
   .post(sessions.create);
-//
 
-router.route('/user/:id')
-  .get(sessions.show)
-  .put(sessions.update);
+
+router.route('/oauth/facebook')
+  .get(oauth.facebook);
 
 router.route('/users/edit')
-  .get(sessions.edit);
+  .get(secureRoute, sessions.edit);
+
+router.route('/users/:id')
+  .get(secureRoute, sessions.show)
+  .put(secureRoute, sessions.update);
+
 
 //
 router.route('/logout')

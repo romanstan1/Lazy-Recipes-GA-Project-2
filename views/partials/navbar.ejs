@@ -1,16 +1,24 @@
 <nav class="">
     <ul class="">
-      <li class="">
-        <a class="" href="/user/<%= user.id %>"><%= user.username %></a>
-      </li>
-      <li class="">
-        <a class="" href="/images">Discover</a>
-      </li>
-      <li class="">
-        <a class="" href="/#">Search Bar</a>
-      </li>
-      <li class="">
-        <a class="" href="/logout">Logout</a>
-      </li>
+
+      <% if(locals.isAuthenticated) { %>
+        <li class="">
+            <a class="" href="/users/<%= user.id %>"><%= user.username %></a>
+        </li>
+        <li class="">
+          <a class="" href="/images">Discover</a>
+        </li>
+
+        <li class="">
+          <a class="" href="/logout">Logout</a>
+        </li>
+
+        <li class="">
+          <form class="" action="/images" method="GET">
+            <input class="search" type="text" name="ingredients" placeholder="Search..">
+          </form>
+        </li>
+
+      <% } %>
     </ul>
 </nav>

@@ -1,6 +1,8 @@
 // standard RESTful routes
 const Image = require('../models/image');
 const runFoodRecognition = require('../lib/clarifai');
+const food2fork = require('../lib/food2fork');
+
 
 //new Image Page
 function newRoute(req, res) {
@@ -17,6 +19,11 @@ function createRoute(req, res, next) {
       req.body.ingredients = ingredients;
       return Image.create(req.body);
     })
+    // .then((image) => {
+    //   food2fork(image.ingredients);
+    //   console.log(image);
+    //   return image;
+    // })
     .then(() => res.redirect('/images'))
     .catch((err) => {
       if(err.name === 'ValidationError') res.badRequest('/images/new', err.toString());
@@ -27,7 +34,7 @@ function createRoute(req, res, next) {
 // show discover page
 function indexRoute(req, res) {
   Image
-    .find()
+    .find(req.query)
     .sort({updatedAt: 'desc'})
     .exec()
     .then((images) => {
@@ -45,7 +52,12 @@ function showRoute(req, res) {
     .exec()
     .then((image) => {
       if(!image) return res.status(404).send('Not found');
-      res.render('images/show', { image });
+      console.log(image.ingredients);
+      return food2fork(image.ingredients)
+        .then((result) => {
+          const recipes = result.recipes.slice(0,5);
+          res.render('images/show', { image, recipes });
+        });
     })
     .catch((err) => {
       res.status(500).end(err);
@@ -62,7 +74,7 @@ function deleteRoute(req, res) {
       return image.remove();
     })
     .then(() => {
-      res.redirect('/images');
+      res.redirect(`/user/${req.user.id}`);
     })
     .catch((err) => {
       res.status(500).end(err);

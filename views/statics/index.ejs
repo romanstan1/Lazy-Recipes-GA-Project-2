@@ -1,4 +1,4 @@
-<h1>Get Stuffed</h1>
+<h1>Lazy Recipes</h1>
 
 <form class ="register" method="POST" action="/register">
   <div>
@@ -21,6 +21,5 @@
   <button>Register</button>
 </form>
 
-<form method="GET" action="/login">
-  <button>Login</button>
-</form>
+<a href="/login">Login</a>
+<a href="<%= oauth.facebook.getLoginURL() %>">Login With Facebook</a>
