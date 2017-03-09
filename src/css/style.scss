@@ -4,78 +4,323 @@
   box-sizing: border-box;
   border: none;
   text-decoration: none;
-  color: black;
-  font-family: sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 0;
+  outline: none;
 }
+
+html { overflow-y: scroll; }
 
 body {
   //padding: 25px;
 }
 
-a {
+form, input, button {
   font-size: 12px;
 }
 
 main {
   min-height: calc(100vh - 200px);
   overflow: hidden;
+  text-align: center;
 }
+
+footer, header {
+  overflow: visible;
+  position: relative;
+  left:0;
+  right: 0;
+  top: 0;
+  height: 140px;
+  background: grey;
+  ul {
+    position: relative;
+    text-align: center;
+    //text-align: left;
+    position: relative;
+    top:40px;
+    height: 40px;
+    //line-height: 20px;
+    background: white;
+    list-style: none;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    li:first-child {
+      float:left;
+    }
+    li:nth-child(4), li:nth-child(3) {
+      float:right;
+    }
+    li:nth-child(2) {
+      float:none;
+      margin-top: 6px;
+    }
+    li {
+      // background:green;
+      display: inline-block;
+      margin: 0px 20px;
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight:bolder;
+      font-style: bold;
+
+      a {
+        margin-top: 0;
+        font-size: inherit;
+        // box-sizing: content-box;
+        padding: 10px;
+        line-height: 20px;
+        display: block;
+        color: black;
+        // height: 50px;
+        // background: yellow;
+        &:hover {
+          color:dodgerblue
+        }
+      }
+    }
+  }
+}
+
+input[type=text].search {
+  background: ghostwhite url(http://www.freeiconspng.com/uploads/search-icon-png-18.png) 62px 9px;
+  font-weight:400;
+  background-size: 10px 10px;
+  font-size: 12px;
+  display:block;
+  margin: 0;
+  width: 200px;
+  box-sizing: border-box;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  color: black;
+  height: 28px;
+  left:30px;
+  background-repeat: no-repeat;
+  padding-top: 1px;
+  padding-left: 80px;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  &::-webkit-input-placeholder {
+    color: #aaaaaa;
+  }
+  &:focus {
+      background: white url(http://www.freeiconspng.com/uploads/search-icon-png-18.png) 5% 9px;
+      background-size: 10px 10px;
+      background-repeat: no-repeat;
+      padding-top: 1px;
+      padding-left: 26px;
+  }
+}
+
+
+
+h2 {
+  margin: 60px 0 10px 0;
+  font-size: 28px;
+  color: black;
+}
+h3 {
+  margin: 0px 0 30px 0;
+  font-size: 18px;
+  color: black;
+}
+
+form.sessionForm {
+  width: 500px;
+  margin: 0 auto;
+  input, button {
+
+    margin: 5px 0;
+    height: 40px;
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    border-radius: 24px;
+    padding-top: 1px;
+    background: #fcfcfc;
+    padding-left: 25px;
+    font-size: 14px;
+    &:focus {
+      background: white;
+      border: 1px solid black;
+      &::-webkit-input-placeholder {
+        opacity: 0;
+      }
+    }
+
+  }
+  button {
+    padding-left: 0px;
+    background: #84DCC6;
+    color:white;
+    font-weight: 600;
+    border-color: #84DCC6;
+    &:hover {
+      opacity: 0.9;
+      cursor: pointer;
+    }
+  }
+}
+
+a.sessionLink {
+  color: white;
+  font-weight: bold;
+  background: tomato;
+  display:block;
+  width: 500px;
+  margin: 10px auto;
+  line-height: 40px;
+  font-size: 14px;
+  border-radius: 24px;
+  border: 1px solid tomato;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+a.facebook {
+  margin-top: 50px;
+  background: #3626A7;
+  color:white;
+  font-weight: 600;
+  border-color:  #3626A7;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+p.sessionLink {
+  display:block;
+  width: 500px;
+  margin: 30px auto;
+  line-height: 30px;
+  margin-top: 50px;
+
+  span {
+    margin: 0 auto;
+    display:block;
+    background: white;
+    font-size: 12px;
+    width: 70px;
+  }
+  &::before {
+    margin-bottom: -15px;
+    content: "";
+    display:block;
+    width: 500px;
+    height: 1px;
+    background: #e5e5e5;
+  }
+}
+
+p.otherSession {
+  display:block;
+  font-size: 14px;
+  color: black;
+  margin: 30px auto;
+  width: 500px;
+  line-height: 30px;
+  a {
+    font-size: inherit;
+    color: grey;
+    margin-left: 10px;
+  }
+}
+
+.grid {
+  margin-top: 50px;
+  background: ghostwhite;
+  &:after {
+  content: '';
+  display: block;
+  clear: both;
+  }
+}
+
+.grid-sizer {
+  width: 33.333%;
+  background:red;
+}
+.grid-item {
+  float: left;
+  width: 32.333%;
+  margin: 0.5% 0px;
+  position: relative;
+  a {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    display: block;
+    background: rgba(16, 114, 233, 0.1);
+    //color: rgba(16, 114, 233, 0.0);
+    color: white;
+    transition: 0.3s ease;
+    border-radius: 12px;
+
+    // box-shadow: 0px #ccc;
+    p {
+      position: absolute;
+      top:49%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      width: 150px;
+      padding: 8px 9px;
+      //height: 10px;
+      //border: 1px solid white;
+      border-radius: 10px;
+      line-height: 100%;
+      font-size: 15px;
+      //text-transform: uppercase;
+      transition: 0.3s ease-in-out;
+      // display:block;
+      color: inherit;
+      // background: rgba(16, 114, 233, 0.0);
+      // z-index: 80;
+      // opacity: 0.2;
+    }
+    &:hover{
+        background: rgba(33, 33, 51, 0.5);
+        //background: rgba(16, 114, 233, 0.3);
+        p {
+          opacity: 1;
+        }
+      //box-shadow: 6px #ccc;
+
+    }
+
+  }
+}
+.grid-item img {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+}
+
+
+
+
+
 
 h1 {
   font-size: 28px;
 }
 
-form {
-  padding: 0;
-  margin: 0;
-  outline: none;
-  &.register {
-    margin-top: 70px;
-  }
-  &.login {
-    margin-top: 200px;
-  }
-}
-
-input {
-  font-size: 14px;
-  outline: none;
-  width: 300px;
-  height: 30px;
-  margin-top: 8px;
-  padding-left: 12px;
-
-  &::-webkit-input-placeholder {
-    color: grey;
-  }
-}
-
-button {
-  outline: none;
-  box-sizing: border-box;
-  margin-top: 25px;
-  font-size: 15px;
-  width: 180px;
-  height: 35px;
-  border: 3px black solid;
-  color: black;
-  font-weight: bold;
-  background: white;
-  cursor: pointer;
-  &:hover {
-    background: black;
-    color: white;
-  }
-}
 
 form.delete {
   z-index: 2;
-  margin-top: -325px;
-  margin-right: -265px;
+  margin-top: -25px;
+  margin-right: -65px;
   button {
     background:none;
-    opacity: 0.4;
+    opacity: 0.7;
     border: none;
     height:35px;
     width:35px;
@@ -106,37 +351,16 @@ form.delete {
   }
 }
 
-input[type=text].search {
-    display:block;
-    margin: 0;
-    width: 200px;
-    box-sizing: border-box;
-    border: 3px solid black;
-    // border-radius: 4px;
-    font-size: 16px;
-    height: 56px;
-    // line-height: 36px;
-    background-color: white;
-    //    background-position: 0px 0px;
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 10px;
-    -webkit-transition: width 0.2s ease-in-out;
-    transition: width 0.2s ease-in-out;
-}
-
-input[type=text].search:focus {
-    width: 200%;
-}
 
 
 .feed {
   display: block;
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
-  background: beige;
-  overflow: hidden;
+  background: ghostwhite;
+  overflow: visible;
   padding-bottom: 100px;
-  padding-top: 200px;
+  padding-top: 000px;
   p {
     font-size: 20px;
     color: black;
@@ -146,6 +370,7 @@ input[type=text].search:focus {
 .profile-image {
   float: left;
   padding: 0;
+  background: grey;
   position: relative;
   display: inline-block;
   width: calc( ((100vw - 50px) / 2) - 1vw );
@@ -191,49 +416,5 @@ input[type=text].search:focus {
     margin: 0 auto;
     display: block;
     height: 100%;
-  }
-}
-
-
-footer, header {
-  overflow: visible;
-  position: relative;
-  left:0;
-  right: 0;
-  top: 0;
-  height: 100px;
-  text-align: left;
-  //margin-top: 100px;
-  // height: 50px;
-  background: grey;
-  // width: 90%;
-  // background: teal;
-  ul {
-    position: relative;
-    top:20px;
-    line-height: 50px;
-    background: teal;
-    list-style: none;
-    display: block;
-    width: 95%;
-    margin: 0 auto;
-    li {
-      display: inline-block;
-      margin-right: 15px;
-      a {
-        border: 3px solid black;
-        font-size: 16px;
-        // box-sizing: content-box;
-        padding: 15px;
-        line-height: 20px;
-        display: block;
-        // height: 50px;
-        // background: yellow;
-        &:hover {
-          border: 3px solid white;
-          color:white
-        }
-      }
-    }
   }
 }

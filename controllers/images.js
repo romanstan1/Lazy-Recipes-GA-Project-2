@@ -38,7 +38,7 @@ function indexRoute(req, res) {
     .sort({updatedAt: 'desc'})
     .exec()
     .then((images) => {
-      res.render('images/index', { images });
+      res.render('statics/index', { images });
     })
     .catch((err) => {
       res.status(500).end(err);

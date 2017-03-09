@@ -9,6 +9,8 @@ const images = require('../controllers/images');
 const upload = require('../lib/upload');
 
 router.get('/register', (req, res) => res.render('registrations/new', { oauth: oauthConfig }));
+router.get('/login', (req, res) => res.render('sessions/new', { oauth: oauthConfig }));
+
 
 router.route('/')
   .get(images.index);
@@ -18,15 +20,16 @@ router.route('/register')
   .post(registrations.create);
 
 router.route('/login')
-  .get(sessions.new)
+  //.get(sessions.new)
   .post(sessions.create);
 
 router.route('/images')
-  .get(images.index)
-  .post(secureRoute, upload.single('filename'), images.create);
+  .get(images.index);
+  //.post(secureRoute, upload.single('filename'), images.create);
 
 router.route('/images/new')
-  .get(secureRoute, images.new);
+  .get(secureRoute, images.new)
+  .post(secureRoute, upload.single('filename'), images.create);
 
 router.route('/images/:id')
   .get(secureRoute, images.show)

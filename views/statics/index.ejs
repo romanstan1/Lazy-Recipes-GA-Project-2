@@ -1,25 +1,19 @@
-<h1>Lazy Recipes</h1>
+<h2>Lazy Recipes</h2>
 
-<form class ="register" method="POST" action="/register">
-  <div>
-    <%# <label for="username">Username</label>%>
-    <input type="text" name="username" id="username" placeholder="Username">
-  </div>
-  <div>
-    <%# <label for="email">Email</label>%>
-    <input type="email" name="email" id="email" placeholder="Email">
-  </div>
-  <div>
-    <%# <label for="password">Password</label>%>
-    <input type="password" name="password" id="password" placeholder="Password">
-  </div>
-  <div>
-    <%# <label for="passwordConfirmation">Password Confirmation</label>%>
-    <input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Password Confirmation">
+
+<div class="feed">
+
+
+  <div class="grid">
+    <div class="grid-sizer"></div>
+    <% images.forEach((image, index) => {  %>
+    <div class="grid-item">
+      <img src="<%= image.src %>" alt="<%= image.caption %>">
+      <a href="/images/<%= image.id %>" >
+        <p>View Recipe </p>
+      </a>
+    </div>
+    <% }) %>
   </div>
 
-  <button>Register</button>
-</form>
-
-<a href="/login">Login</a>
-<a href="<%= oauth.facebook.getLoginURL() %>">Login With Facebook</a>
+</div>

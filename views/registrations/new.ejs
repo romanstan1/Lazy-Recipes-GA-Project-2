@@ -1,5 +1,11 @@
+<h2>Join us</h2>
+<h3> Be part of the community.</h3>
 
-<form class ="register" method="POST" action="/register">
+<a class="sessionLink facebook" href="<%= oauth.facebook.getLoginURL() %>">Join using Facebook</a>
+
+<p class="sessionLink"> <span>OR </span> </p>
+
+<form class="sessionForm" method="POST" action="/register">
   <div>
     <%# <label for="username">Username</label>%>
     <input type="text" name="username" id="username" placeholder="Username">
@@ -20,5 +26,5 @@
   <button>Register</button>
 </form>
 
-<a href="/login">Login</a>
-<a href="<%= oauth.facebook.getLoginURL() %>">Join With Facebook</a>
+
+<p class="otherSession"> Already a member? <a href="/login">  Login</a></p>

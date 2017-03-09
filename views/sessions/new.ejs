@@ -1,5 +1,10 @@
+<h2>Log in</h2>
 
-<form class = "login" method="POST" action="/login">
+<a class="sessionLink facebook" href="<%= oauth.facebook.getLoginURL() %>">Log in using Facebook</a>
+
+<p class="sessionLink"> <span>OR </span> </p>
+
+<form class="sessionForm" method="POST" action="/login">
   <div>
     <label for="email"></label>
     <input type="email" name="email" id="email" placeholder="Email">
@@ -11,3 +16,5 @@
 
   <button>Login</button>
 </form>
+
+<p class="otherSession"> Not a member? <a href="/register">  Join here</a></p>

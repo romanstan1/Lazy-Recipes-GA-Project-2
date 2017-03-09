@@ -3,20 +3,23 @@
   <button> UPLOAD NEW IMAGE</button>
 </form>
 
-<a href="/users/edit">EDIT USER DETAILS</a>
-
-<form method="GET" action="/users/edit">
-  <button> EDIT USER DETAILS</button>
-</form>
+<a class="sessionLink" href="/users/edit">EDIT USER DETAILS</a>
 
 
-<h1><%= user.username %>'s Profile</h1>
+
+<h2><%= user.username %>'s Profile</h2>
 
 <div class="feed">
-  <% images.forEach((image) => { %>
-    <div class="profile-image">
+
+
+
+  <div class="grid">
+    <div class="grid-sizer"></div>
+    <% images.forEach((image, index) => {  %>
+    <div class="grid-item">
+      <img src="<%= image.src %>" alt="<%= image.caption %>">
       <a href="/images/<%= image.id %>" >
-        <img src="<%= image.src %>" alt="<%= image.caption %>">
+        <p>View Recipe <p>
       </a>
 
       <form class="delete" action="/images/<%= image.id %>" method="POST">
@@ -24,6 +27,7 @@
         <button><div> </div></button>
       </form>
     </div>
-  <% }) %>
+    <% }) %>
+  </div>
 
 </div>
