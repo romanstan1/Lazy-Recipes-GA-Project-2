@@ -8,10 +8,18 @@ const images = require('../controllers/images');
 
 const upload = require('../lib/upload');
 
-router.get('/', (req, res) => res.render('statics/index', { oauth: oauthConfig }));
+router.get('/register', (req, res) => res.render('registrations/new', { oauth: oauthConfig }));
+
+router.route('/')
+  .get(images.index);
 
 router.route('/register')
+  //.get(registrations.new)
   .post(registrations.create);
+
+router.route('/login')
+  .get(sessions.new)
+  .post(sessions.create);
 
 router.route('/images')
   .get(images.index)
@@ -21,13 +29,8 @@ router.route('/images/new')
   .get(secureRoute, images.new);
 
 router.route('/images/:id')
-  .get(images.show)
+  .get(secureRoute, images.show)
   .delete(secureRoute, images.delete);
-
-router.route('/login')
-  .get(sessions.new)
-  .post(sessions.create);
-
 
 router.route('/oauth/facebook')
   .get(oauth.facebook);

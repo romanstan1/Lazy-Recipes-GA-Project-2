@@ -1,0 +1,24 @@
+
+<form class ="register" method="POST" action="/register">
+  <div>
+    <%# <label for="username">Username</label>%>
+    <input type="text" name="username" id="username" placeholder="Username">
+  </div>
+  <div>
+    <%# <label for="email">Email</label>%>
+    <input type="email" name="email" id="email" placeholder="Email">
+  </div>
+  <div>
+    <%# <label for="password">Password</label>%>
+    <input type="password" name="password" id="password" placeholder="Password">
+  </div>
+  <div>
+    <%# <label for="passwordConfirmation">Password Confirmation</label>%>
+    <input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Password Confirmation">
+  </div>
+
+  <button>Register</button>
+</form>
+
+<a href="/login">Login</a>
+<a href="<%= oauth.facebook.getLoginURL() %>">Join With Facebook</a>

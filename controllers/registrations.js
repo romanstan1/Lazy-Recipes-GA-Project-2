@@ -1,8 +1,8 @@
 const User = require('../models/user');
 
-// function newRoute(req, res) {
-//   return res.render('registrations/new');
-// }
+function newRoute(req, res) {
+  return res.render('registrations/new');
+}
 
 function createRoute(req, res, next) {
   User
@@ -18,6 +18,6 @@ function createRoute(req, res, next) {
 }
 
 module.exports = {
-  // new: newRoute,
+  new: newRoute,
   create: createRoute
 };
