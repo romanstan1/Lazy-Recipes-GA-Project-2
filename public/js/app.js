@@ -47,6 +47,7 @@ $(function () {
     $('h5').removeClass('madeBy');
     $('header').removeClass('opacity');
     $('h2.home').addClass('changeColorH2');
+    $('h3.home').addClass('changeColorH3');
     //$('h3.home').removeClass('changeColorH3');
   }
 
