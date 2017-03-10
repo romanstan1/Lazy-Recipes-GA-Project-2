@@ -1,11 +1,11 @@
-<form method="POST" action="/images/new" enctype="multipart/form-data">
-  <div>
-    <label for="filename">Image file</label>
+<form class="sessionForm" method="POST" action="/images/new" enctype="multipart/form-data">
+  <div class="addImage">
+    <label for="filename" placeholder="Add Image"> Add Filename</label>
     <input type="file" name="filename" id="filename">
   </div>
-  <div>
-    <label for="caption">Caption</label>
-    <textarea name="caption" id="caption"></textarea>
+  <div class="addImage">
+    <%# <label for="caption" value="caption" placeholder="caption"></label>%>
+    <textarea name="caption" id="caption"  value="caption" placeholder="Insert caption"></textarea>
   </div>
-  <button>Add</button>
+  <button>Upload</button>
 </form>

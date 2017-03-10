@@ -1,9 +1,8 @@
 
-<form method="GET" action="/images/new">
-  <button> UPLOAD NEW IMAGE</button>
-</form>
+<a class="sessionLink upload" href="/images/new">Upload new image</a>
 
-<a class="sessionLink" href="/users/edit">EDIT USER DETAILS</a>
+
+<a class="sessionLink edit" href="/users/edit">Edit User Details</a>
 
 
 
@@ -20,13 +19,14 @@
       <img src="<%= image.src %>" alt="<%= image.caption %>">
       <a href="/images/<%= image.id %>" >
         <p>View Recipe <p>
-      </a>
 
       <form class="delete" action="/images/<%= image.id %>" method="POST">
         <input type="hidden" name="_method" value="DELETE"/>
         <button><div> </div></button>
       </form>
+      </a>
     </div>
+
     <% }) %>
   </div>
 

@@ -70,11 +70,10 @@ function deleteRoute(req, res) {
     .exec()
     .then((image) => {
       if(!image) return res.status(404).send('Not found');
-
       return image.remove();
     })
     .then(() => {
-      res.redirect(`/user/${req.user.id}`);
+      res.redirect(`/users/${req.user.id}`);
     })
     .catch((err) => {
       res.status(500).end(err);
