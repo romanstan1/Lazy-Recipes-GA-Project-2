@@ -4,18 +4,21 @@
   </div>
   <div class="feed">
     <p>
+      <%= image.ingredients %>
+      <br><br><br>
       <% recipes.forEach((recipe) => { %>
-        <%= recipe.title %> <br>
-        <%= recipe.image_url %> <br>
-        <img src="<%= recipe.image_url %>" alt="<%= recipe.title %>"> <br>
-        <%= recipe.publisher %> <br>
-        <br>
-        <br>
-        <br>
-
+        <div class="recipeWrap">
+        
+          <h3> <%= recipe.title %> </h3>
+          <h4><%= recipe.image_url %></h4>
+          <img src="<%= recipe.image_url %>" alt="<%= recipe.title %>"> <br>
+          <%= recipe.publisher %> <br>
+          <br>
+          <br>
+          <br>
+        </div>
 
       <% }) %>
-      <%= image.ingredients %>
     </p>
   </div>
 </div>

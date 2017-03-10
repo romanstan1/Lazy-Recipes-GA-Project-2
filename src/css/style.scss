@@ -17,8 +17,49 @@ body {
    background: rgba(33, 33, 51, 0.9);
    transition: all 0.8s ease-in-out;
 }
+h2.h2user {
+  margin-top: 60px;
+}
 
+div.recipeWrap {
+  h3 {
+    margin-top: 10px;
+    font-size: 20px;
+    color: black;
+    margin-top: 25px;
+    border-top: 3px solid black;
+  }
+  h4 {
+    margin-top: 0px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: dodgerblue;
+  }
+}
 
+div.logo{
+  position: relative;
+  display: block;
+  margin-top: -40px;
+  margin: 0 auto;
+  //height: 34px;
+  width: 34px;
+  //background: grey;
+
+  img {
+    position: absolute;
+    margin-top: -88px;
+    //right: 11px;
+    display: block;
+    height: 34px;
+    width: 90%;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        margin-top: -90px;
+        transform: rotate(-180deg);
+    }
+  }
+}
 
 .home {
   color: white;
@@ -50,7 +91,7 @@ h5.madeBy {
   -webkit-background-clip: text;
   color: #b4f25f;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 400px ;
+  margin-bottom: 50vh ;
   opacity: 1;
 }
 header.opacity {
@@ -204,7 +245,7 @@ input[type=text].search {
 }
 
 h2 {
-  margin: 100px 0 10px 0;
+  margin: 140px 0 10px 0;
   font-size: 28px;
   color: black;
 }

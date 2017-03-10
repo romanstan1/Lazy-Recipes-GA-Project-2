@@ -24,7 +24,7 @@ function createRoute(req, res, next) {
     //   console.log(image);
     //   return image;
     // })
-    .then(() => res.redirect('/images'))
+    .then(() => res.redirect('/'))
     .catch((err) => {
       if(err.name === 'ValidationError') res.badRequest('/images/new', err.toString());
       next(err);
