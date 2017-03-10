@@ -46,6 +46,7 @@ $(function () {
     $('h3.home').html('');
     //console.log(window.location.search.slice(13));
     $('h2.home').html(window.location.search.slice(13));
+    $('div.logo').html('');
   }
 
 
