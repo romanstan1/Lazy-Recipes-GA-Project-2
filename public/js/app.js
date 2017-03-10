@@ -42,6 +42,13 @@ $(function () {
   // });
   $('h5').addClass('madeBy');
 
+  if (window.location.pathname === '/images') {
+    $('h3.home').html('');
+    //console.log(window.location.search.slice(13));
+    $('h2.home').html(window.location.search.slice(13));
+  }
+
+
   if (window.location.pathname !== '/') {
     $('body').addClass('changeColor');
     $('h5').removeClass('madeBy');
