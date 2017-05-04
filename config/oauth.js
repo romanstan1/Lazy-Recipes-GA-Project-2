@@ -5,7 +5,7 @@ module.exports = {
     profileURL: 'https://api.facebook.com/user',
     clientId: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    redirectURI: 'http://localhost:3000/oauth/facebook',
+    redirectURI: 'https://lazyrecipes.herokuapp.com/oauth/facebook',
     getLoginURL() {
       return `${this.loginURL}?client_id=${this.clientId}&redirect_uri=${this.redirectURI}`;
     }

@@ -42,20 +42,11 @@ $(function () {
   // });
   $('h5').addClass('madeBy');
 
-  if (window.location.pathname === '/images') {
-    $('h3.home').html('');
-    //console.log(window.location.search.slice(13));
-    $('h2.home').html(window.location.search.slice(13));
-    $('div.logo').html('');
-  }
-
-
   if (window.location.pathname !== '/') {
     $('body').addClass('changeColor');
     $('h5').removeClass('madeBy');
     $('header').removeClass('opacity');
     $('h2.home').addClass('changeColorH2');
-    $('h3.home').addClass('changeColorH3');
     //$('h3.home').removeClass('changeColorH3');
   }
 

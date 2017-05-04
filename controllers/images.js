@@ -87,3 +87,29 @@ module.exports = {
   show: showRoute,
   delete: deleteRoute
 };
+
+//
+// {
+//    accumulatorName: 'accy name', //ONLY THING TO EDIT
+//    accumulatorId: '12818928923'
+//    Events: [
+//      {
+//      EventName: 'Manu vs Chelsea', //ONLY ADD and DELETE EVENTS
+//      EventId: 28198984394,
+//      MarketName: 'Manu to win',
+//      MarketId: 33437842912,
+//      },
+//      {
+//      EventName: 'Rotherham vs Scunthorp', //ONLY ADD and DELETE EVENTS
+//      EventId: 12584394,
+//      MarketName: 'Manu to win',
+//      MarketId: 333327842912,
+//      },
+//      {
+//      EventName: 'Leiceter vs Watford', //ONLY ADD and DELETE EVENTS
+//      EventId: 28198984394,
+//      MarketName: 'Leiceter to win',
+//      MarketId: 33437842912,
+//      }
+//    ]
+//  }
