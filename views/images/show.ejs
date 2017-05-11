@@ -1,24 +1,28 @@
 <div class="feed">
-  <div class="recipe-image">
-    <img src="<%= image.src %>" alt="<%= image.caption %>">
-  </div>
-  <div class="feed">
-    <p>
-      <%= image.ingredients %>
-      <br><br><br>
-      <% recipes.forEach((recipe) => { %>
-        <div class="recipeWrap">
-        
-          <h3> <%= recipe.title %> </h3>
-          <h4><%= recipe.image_url %></h4>
-          <img src="<%= recipe.image_url %>" alt="<%= recipe.title %>"> <br>
-          <%= recipe.publisher %> <br>
-          <br>
-          <br>
-          <br>
-        </div>
+  <section class="recipe-image">
+    <div class="image">
+      <img src="<%= image.src %>" alt="<%= image.caption %>">
+    </div>
+    <div class="text">
+      <h5>Ingredients</h5>
+      <p>
+        <% image.ingredients.forEach((ingredient) => { %>
+           <%= ingredient %>
+        <% }) %>
+      </p>
+    </div>
+  </section>
 
-      <% }) %>
-    </p>
-  </div>
+  <% recipes.forEach((recipe) => { %>
+  <section class="returned-recipes">
+      <div class="text">
+        <p><%= recipe.title %> </p>
+        <p> By: <%= recipe.publisher %></p>
+        <p><a href="<%= recipe.image_url %>">Link To Recipe </a> </p>
+      </div>
+      <div class="image">
+        <img src="<%= recipe.image_url %>" alt="<%= recipe.title %>">
+      </div>
+  </section>
+  <% }) %>
 </div>
