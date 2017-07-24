@@ -5,40 +5,14 @@
     <title>Lazy Recipes</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <%# <script src="/js/jquery311.js" charset="utf-8"></script>%>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
     <script src="/js/app.js" charset="utf-8"></script>
   </head>
   <body>
 
-    <header>
-      <% include ./partials/navbar %>
-    </header>
-
     <main>
 
-      <% for(const type in messages) { %>
-        <div class="<%= type %>">
-          <h5><%= messages[type] %></h5>
-        </div>
-      <% } %>
-
       <%- body %>
-      <%# <div class="bottom-panel">
-
-      </div>
-      <div class="really-bottom-panel">
-
-      </div>%>
-
 
     </main>
-
-    <footer>
-      <% include ./partials/footer %>
-    </footer>
-
   </body>
 </html>

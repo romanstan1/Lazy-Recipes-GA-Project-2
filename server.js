@@ -11,7 +11,7 @@ const { port, env, dbURI, sessionSecret } = require('./config/environment');
 const errorHandler = require('./lib/errorHandler');
 const routes = require('./config/routes');
 const customResponses = require('./lib/customResponses');
-const authentication = require('./lib/authentication');
+// const authentication = require('./lib/authentication');
 
 //create an express app
 const app = express();
@@ -53,7 +53,7 @@ app.use(flash());
 
 //set up custom middleware
 app.use(customResponses);
-app.use(authentication);
+// app.use(authentication);
 
 
 //stick in the routes before error handler

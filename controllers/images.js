@@ -1,115 +1,55 @@
-// standard RESTful routes
 const Image = require('../models/image');
-const runFoodRecognition = require('../lib/clarifai');
-const food2fork = require('../lib/food2fork');
+const runFacialRecognition = require('../lib/clarifai');
 
 
-//new Image Page
-function newRoute(req, res) {
-  res.render('images/new');
+function indexRoute(req, res) {
+  res.render('statics/index' );
+}
+function showRoute(req, res) {
+  res.render('statics/show' );
 }
 
-// create Image
 function createRoute(req, res, next) {
-  if(req.file) req.body.filename = req.file.key;
-  req.body.createdBy = req.user;
+  runFacialRecognition(req.file.location)
+    .then((attributes) => {
+      console.log( 'DATA',  attributes.outputs[0].data.regions[0].data.face.age_appearance.concepts);
 
-  runFoodRecognition(req.file.location)
-    .then((ingredients) => {
-      req.body.ingredients = ingredients;
-      return Image.create(req.body);
+
+      const totalAge = attributes.outputs[0].data.regions[0].data.face.age_appearance.concepts.slice(0, 5).reduce((accumulator, object, index) => {
+        console.log('age:',accumulator,'object:', object, 'index:', index);
+        return parseInt(object.name) + accumulator
+      }, 0);
+
+      const averageAge =  Math.round(totalAge / 5);
+
+      const gender = attributes.outputs[0].data.regions[0].data.face.gender_appearance.concepts[0].name;
+      let ageGroup = null;
+      switch (true) {
+        case averageAge < 25:
+          ageGroup =  '16 - 24';
+          break;
+        case averageAge < 35:
+          ageGroup =  '25 - 34';
+          break;
+        case averageAge < 51:
+          ageGroup =  '35 - 50';
+          break;
+        default:
+          ageGroup =  'Over 50';
+      }
+
+
+      res.render('statics/show', { averageAge, ageGroup, gender })
+      // res.render('statics/show', { age: attributes.outputs[0].data.regions[0].data.face })
     })
-    // .then((image) => {
-    //   food2fork(image.ingredients);
-    //   console.log(image);
-    //   return image;
-    // })
-    .then(() => res.redirect('/'))
     .catch((err) => {
-      if(err.name === 'ValidationError') res.badRequest('/images/new', err.toString());
+      if(err.name === 'ValidationError') res.badRequest('/', err.toString());
       next(err);
     });
 }
 
-// show discover page
-function indexRoute(req, res) {
-  Image
-    .find(req.query)
-    .sort({updatedAt: 'desc'})
-    .exec()
-    .then((images) => {
-      res.render('statics/index', { images });
-    })
-    .catch((err) => {
-      res.status(500).end(err);
-    });
-}
-
-// show route
-function showRoute(req, res) {
-  Image
-    .findById(req.params.id)
-    .exec()
-    .then((image) => {
-      if(!image) return res.status(404).send('Not found');
-      console.log(image.ingredients);
-      return food2fork(image.ingredients)
-        .then((result) => {
-          const recipes = result.recipes.slice(0,5);
-          res.render('images/show', { image, recipes });
-        });
-    })
-    .catch((err) => {
-      res.status(500).end(err);
-    });
-}
-
-function deleteRoute(req, res) {
-  Image
-    .findById(req.params.id)
-    .exec()
-    .then((image) => {
-      if(!image) return res.status(404).send('Not found');
-      return image.remove();
-    })
-    .then(() => {
-      res.redirect(`/users/${req.user.id}`);
-    })
-    .catch((err) => {
-      res.status(500).end(err);
-    });
-}
-
 module.exports = {
-  new: newRoute,
   create: createRoute,
   index: indexRoute,
-  show: showRoute,
-  delete: deleteRoute
+  show: showRoute
 };
-
-//
-// {
-//    accumulatorName: 'accy name', //ONLY THING TO EDIT
-//    accumulatorId: '12818928923'
-//    Events: [
-//      {
-//      EventName: 'Manu vs Chelsea', //ONLY ADD and DELETE EVENTS
-//      EventId: 28198984394,
-//      MarketName: 'Manu to win',
-//      MarketId: 33437842912,
-//      },
-//      {
-//      EventName: 'Rotherham vs Scunthorp', //ONLY ADD and DELETE EVENTS
-//      EventId: 12584394,
-//      MarketName: 'Manu to win',
-//      MarketId: 333327842912,
-//      },
-//      {
-//      EventName: 'Leiceter vs Watford', //ONLY ADD and DELETE EVENTS
-//      EventId: 28198984394,
-//      MarketName: 'Leiceter to win',
-//      MarketId: 33437842912,
-//      }
-//    ]
-//  }

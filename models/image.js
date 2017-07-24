@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const imageSchema = new mongoose.Schema({
   filename: { type: String },
   caption: { type: String },
-  ingredients: { type: Array },
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' }
+  ingredients: { type: Array }
+  // createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' }
 }, {
   timestamps: true
 });
