@@ -9,14 +9,25 @@ function showRoute(req, res) {
   res.render('statics/show' );
 }
 
+function resultsRoute(req, res) {
+
+  // console.log('req.body', req.body);
+  // console.log('req.bodyall', req);
+
+  // console.log('reQ body results', req.body.results);
+  // console.log('reS body results', res.body.results);
+  res.render('statics/results' );
+}
+
 function createRoute(req, res, next) {
   runFacialRecognition(req.file.location)
     .then((attributes) => {
-      console.log( 'DATA',  attributes.outputs[0].data.regions[0].data.face.age_appearance.concepts);
 
+
+      const data = req.body.results = attributes.outputs[0].data.regions[0].data.face;
 
       const totalAge = attributes.outputs[0].data.regions[0].data.face.age_appearance.concepts.slice(0, 5).reduce((accumulator, object, index) => {
-        console.log('age:',accumulator,'object:', object, 'index:', index);
+
         return parseInt(object.name) + accumulator
       }, 0);
 
@@ -37,9 +48,8 @@ function createRoute(req, res, next) {
         default:
           ageGroup =  'Over 50';
       }
-
-
-      res.render('statics/show', { averageAge, ageGroup, gender })
+      console.log('data', data.age_appearance.concepts[0]);
+      res.render('statics/show', { data, ageGroup, gender })
       // res.render('statics/show', { age: attributes.outputs[0].data.regions[0].data.face })
     })
     .catch((err) => {
@@ -51,5 +61,6 @@ function createRoute(req, res, next) {
 module.exports = {
   create: createRoute,
   index: indexRoute,
-  show: showRoute
+  show: showRoute,
+  results: resultsRoute
 };

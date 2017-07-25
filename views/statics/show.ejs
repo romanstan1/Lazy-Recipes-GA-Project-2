@@ -16,3 +16,28 @@
   </div>
 
 </div>
+
+  <br/>
+  <br/>
+
+<a class="backbutton" style="background:#f6f6f6" id="toggle">View detailed results</a>
+
+
+<div class="details" id="details">
+  <br/>
+  <br/>
+  <br/>
+  <div class="left">
+    Age --- Probability <br> <br>
+    <% data.age_appearance.concepts.forEach((age) => { %>
+      <div class="case">   <span> <%= age.name %> --- <%= age.value %>   </span> </div>
+      <% }) %>
+  </div>
+
+  <div class="right">
+    Gender --- Probability  <br> <br>
+    <% data.gender_appearance.concepts.forEach((gender) => { %>
+      <div class="case">   <span> <%= gender.name %> --- <%= gender.value %>  </span> </div>
+      <% }) %>
+  </div>
+</div>

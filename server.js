@@ -31,6 +31,7 @@ mongoose.connect(dbURI);
 //set up our middleware
 if(env !== 'test') app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use(methodOverride(function (req) {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {

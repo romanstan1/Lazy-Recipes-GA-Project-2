@@ -9,4 +9,7 @@ router.route('/')
 router.route('/show')
   .get(images.show);
 
+router.route('/results')
+  .get(images.results);
+
 module.exports = router; //export the function Router()
